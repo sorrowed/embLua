@@ -3,8 +3,6 @@
 ** Configuration file for Lua
 ** See Copyright Notice in lua.h
 */
-
-
 #ifndef luaconf_h
 #define luaconf_h
 
@@ -13,6 +11,12 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "luaProjectConfig.h"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 /*
 ** ===================================================================
 ** Search for "@@" to find all configurable definitions.
@@ -27,13 +31,6 @@
 ** restricting it to C89.
 ** =====================================================================
 */
-
-
-#ifndef DONT_USE_LUA_HEAP_MANAGEMENT_FUNCTIONS
-/*The lua heap (luaHeap.c) functions shall be used.*/
-
-#include "helper/luaHeap.h"
-
 #define luaMallocFunction(xWantedSize) luaMalloc(xWantedSize)
 #define luaFreeFunction(pv) luaFree(pv)
 
@@ -43,8 +40,6 @@
 
 #ifndef LUA_MEM_LEAVE_CRITICAL_SECTION
 #define LUA_MEM_LEAVE_CRITICAL_SECTION()
-#endif
-
 #endif
 
 extern void luaAbort(void);
@@ -616,7 +611,9 @@ extern void luaAbort(void);
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 
